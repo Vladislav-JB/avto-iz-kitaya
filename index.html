@@ -1,31 +1,514 @@
 <!doctype html>
-<html lang="ru" data-stub>
+<html lang="ru">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Сайт: авто из Китая под заказ · демо готовится</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>КитайМост · авто из Китая под ключ через Уссурийск</title>
+<meta name="description" content="Подбор и доставка автомобилей из Китая под ключ через Уссурийскую таможню. Каталог с готовой ценой в рублях, проверка истории по VIN.">
 <meta name="robots" content="noindex">
-<meta http-equiv="refresh" content="120">
+<meta property="og:title" content="КитайМост · авто из Китая под ключ">
+<meta property="og:description" content="Выбор за вами, всё остальное – за нами. Каталог с ценой под ключ в Уссурийске.">
+<meta property="og:url" content="https://web-atelie.ru/avto-iz-kitaya/">
+<meta property="og:image" content="https://web-atelie.ru/avto-iz-kitaya/assets/og.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23E8352B'/%3E%3Cpath d='M5 21c4-8 18-8 22 0' stroke='%23fff' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3Cpath d='M9 21v4M23 21v4M16 15v10' stroke='%23fff' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&family=Manrope:wght@400;600&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Carlito:ital,wght@1,700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#F6F3EE;--ink:#1F1E1C;--muted:#6B655C;--acc:#8A6737}
-@media (prefers-color-scheme:dark){:root{--bg:#161615;--ink:#EDE7DC;--muted:#A9A195;--acc:#C9A66B}}
-*{box-sizing:border-box}html,body{height:100%}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Manrope,system-ui,sans-serif;display:grid;place-items:center;padding:24px}
-main{max-width:560px;text-align:center;display:flex;flex-direction:column;gap:18px;align-items:center}
-.k{font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:var(--acc);font-weight:600}
-h1{font:500 clamp(2rem,6vw,3rem)/1.1 "Cormorant Garamond",Georgia,serif;margin:0;text-wrap:balance}
-p{margin:0;color:var(--muted)}
-.bar{width:220px;height:3px;background:color-mix(in srgb,var(--acc) 20%,transparent);border-radius:3px;overflow:hidden}
-.bar i{display:block;height:100%;width:40%;background:var(--acc);animation:m 1.6s ease-in-out infinite}
-@keyframes m{0%{transform:translateX(-100%)}100%{transform:translateX(250%)}}
-@media (prefers-reduced-motion:reduce){.bar i{animation:none;width:60%}}
+:root{--red:#E8352B;--red2:#C9261D;--navy:#13233F;--ink:#1D2433;--soft:#5E6676;--mute:#8C93A1;--line:#E6E8EE;--bg:#F4F5F8;--card:#fff;--gold:#F5A623;--ok:#1E9E5A;--r:12px;--f:"Inter",system-ui,sans-serif}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 var(--f);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+button,input,select,textarea{font:inherit;color:inherit}
+img{display:block;max-width:100%}
+h1,h2,h3{margin:0;line-height:1.2;letter-spacing:-.01em}
+h2{font-size:clamp(22px,2.4vw,28px);font-weight:800}
+.wrap{max-width:1200px;margin:0 auto;padding:0 18px}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:8px;background:var(--red);color:#fff;font-weight:700;padding:12px 20px;cursor:pointer;text-decoration:none;white-space:nowrap}
+.btn:hover{background:var(--red2)}
+.btn--line{background:#fff;color:var(--red);border:1.5px solid var(--red)}
+.btn--line:hover{background:#FFF1F0}
+.btn--dark{background:var(--navy)}
+.btn--dark:hover{background:#0b1830}
+.tag{display:inline-block;font-size:11.5px;font-weight:700;padding:2px 7px;border-radius:4px;background:#FFF1F0;color:var(--red)}
+.tag--ok{background:#E8F7EF;color:var(--ok)}
+.tag--gray{background:#EEF0F4;color:var(--soft)}
+
+/* полоска и шапка */
+.strip{background:var(--navy);color:#C6CEDD;font-size:12.5px}
+.strip .wrap{display:flex;gap:18px;justify-content:space-between;padding-top:6px;padding-bottom:6px;flex-wrap:wrap}
+.hdr{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:30}
+.hdr .wrap{display:flex;align-items:center;gap:22px;height:66px}
+.logo{display:flex;align-items:center;gap:9px;text-decoration:none}
+.logo svg{width:38px;height:38px}
+.logo b{display:block;font-size:20px;font-weight:800;color:var(--ink);letter-spacing:-.02em}
+.logo b span{color:var(--red)}
+.logo small{display:block;font-size:10.5px;color:var(--mute);margin-top:1px}
+.nav{display:flex;gap:2px;margin-left:8px}
+.nav a{text-decoration:none;font-weight:600;font-size:14px;padding:8px 10px;border-radius:6px;color:#3A4254}
+.nav a:hover,.nav a.cur{color:var(--red);background:#FFF1F0}
+.hdr__ph{margin-left:auto;text-decoration:none;font-weight:800;white-space:nowrap}
+.burger{display:none;background:none;border:0;padding:6px;cursor:pointer}
+.mnav{display:none}
+
+/* герой */
+.hero{position:relative;color:#fff;overflow:hidden;background:var(--navy)}
+.hero__bg{position:absolute;inset:0;background:url(assets/hero.webp) center/cover;opacity:.35}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgb(19 35 63 / .95) 0%,rgb(19 35 63 / .7) 55%,rgb(232 53 43 / .55) 100%)}
+.hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:30px;align-items:center;padding-top:44px;padding-bottom:44px}
+.hero h1{font-size:clamp(28px,4vw,46px);font-weight:800}
+.hero h1 span{color:#FFC9C5}
+.hero__sub{margin:14px 0 22px;color:#D9DFEA;font-size:17px;max-width:560px}
+.quick{display:flex;gap:10px;flex-wrap:wrap;background:#fff;border-radius:12px;padding:10px;max-width:640px;box-shadow:0 14px 30px rgb(0 0 0 / .25)}
+.quick input{flex:1 1 160px;border:1px solid var(--line);border-radius:8px;padding:12px;color:var(--ink);min-width:0}
+.quick .btn{flex:1 1 100%}
+.quick small{flex-basis:100%;color:var(--soft);font-size:12px}
+.owner{background:rgb(255 255 255 / .1);border:1px solid rgb(255 255 255 / .25);border-radius:16px;padding:20px;backdrop-filter:blur(6px);text-align:center}
+.owner__ph{width:150px;height:150px;border-radius:50%;margin:0 auto 14px;background:radial-gradient(circle at 50% 38%,#fff3 0 26%,transparent 27%),radial-gradient(ellipse at 50% 100%,#fff3 0 48%,transparent 49%),#ffffff14;border:3px dashed rgb(255 255 255 / .45);display:grid;place-items:end center;padding-bottom:8px;font-size:11px;color:#E5E9F1}
+.owner b{display:block;font-size:17px}
+.owner span{font-size:13.5px;color:#D9DFEA}
+.facts{display:flex;gap:22px;flex-wrap:wrap;margin-top:22px}
+.facts div b{display:block;font-size:24px;font-weight:800}
+.facts div span{font-size:12.5px;color:#C6CEDD}
+
+/* поиск */
+.search{background:#fff;border-radius:12px;box-shadow:0 8px 24px rgb(19 35 63 / .08);padding:16px;margin-top:-26px;position:relative;z-index:2;display:grid;grid-template-columns:repeat(4,minmax(0,1fr)) auto;gap:10px}
+select,input[type=number],.field{border:1px solid var(--line);border-radius:8px;padding:11px 12px;background:#fff;width:100%;min-width:0}
+.sec{padding:46px 0 0}
+.sec__head{display:flex;justify-content:space-between;align-items:end;gap:14px;margin-bottom:18px;flex-wrap:wrap}
+.sec__head p{margin:6px 0 0;color:var(--soft)}
+.brands{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.brands button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 14px;font-weight:600;font-size:13.5px;cursor:pointer}
+.brands button:hover{border-color:var(--red);color:var(--red)}
+
+/* карточки авто */
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.car{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;text-decoration:none;display:flex;flex-direction:column;transition:box-shadow .2s,transform .2s;position:relative}
+.car:hover{box-shadow:0 10px 26px rgb(19 35 63 / .12);transform:translateY(-2px)}
+.car__ph{position:relative;aspect-ratio:10/7;background:#e9ecf1}
+.car__ph img{width:100%;height:100%;object-fit:cover}
+.car__ph .tag{position:absolute;left:8px;top:8px}
+.car__ph .sold{position:absolute;inset:0;background:rgb(19 35 63 / .6);color:#fff;display:grid;place-items:center;font-weight:800;letter-spacing:.04em}
+.car__b{padding:12px 14px 14px;display:flex;flex-direction:column;gap:5px;flex:1}
+.car h3{font-size:15.5px;font-weight:700}
+.car__meta{font-size:12.5px;color:var(--soft)}
+.car__price{margin-top:auto;padding-top:8px}
+.car__price b{font-size:19px;color:var(--red);font-weight:800}
+.car__price small{display:block;font-size:11.5px;color:var(--mute)}
+.more{display:flex;justify-content:center;margin-top:18px}
+
+/* о нас, схема, услуги */
+.about{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px}
+.about__txt{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:24px}
+.about__txt p{color:var(--soft);margin:12px 0 0}
+.about__list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.about__list div{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:18px}
+.about__list b{display:block;font-size:26px;font-weight:800;color:var(--red)}
+.about__list span{color:var(--soft);font-size:14px}
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;counter-reset:s}
+.steps li{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:18px;counter-increment:s;position:relative}
+.steps li::before{content:counter(s);display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--red);color:#fff;font-weight:800;margin-bottom:10px}
+.steps b{display:block;margin-bottom:4px}
+.steps span{color:var(--soft);font-size:13.5px}
+.services{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.services div{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:18px}
+.services i{font-style:normal;font-size:24px}
+.services b{display:block;margin:8px 0 4px}
+.services span{color:var(--soft);font-size:13.5px}
+.posts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.post{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:20px;text-decoration:none;display:flex;flex-direction:column;gap:8px}
+.post:hover{border-color:var(--red)}
+.post small{color:var(--mute)}
+.post p{margin:0;color:var(--soft);font-size:14px}
+
+/* страницы */
+.page{padding:26px 0 0}
+.crumbs{font-size:13px;color:var(--mute);margin-bottom:14px}
+.crumbs a{text-decoration:none;color:var(--soft)}
+.catalog{display:grid;grid-template-columns:260px minmax(0,1fr);gap:18px;align-items:start}
+.filters{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:16px;display:grid;gap:12px;position:sticky;top:80px}
+.filters label{display:grid;gap:5px;font-size:13px;font-weight:600;color:var(--soft)}
+.filters .row2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.cat__top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-wrap:wrap;gap:8px}
+.cat__top b{font-size:15px}
+.catalog .grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+.pager{display:flex;gap:6px;justify-content:center;margin-top:18px;flex-wrap:wrap}
+.pager button{min-width:38px;height:38px;border:1px solid var(--line);background:#fff;border-radius:8px;cursor:pointer;font-weight:600}
+.pager button.cur{background:var(--red);border-color:var(--red);color:#fff}
+.empty{background:#fff;border:1px dashed var(--line);border-radius:var(--r);padding:30px;text-align:center;color:var(--soft)}
+.carpage{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:20px;align-items:start}
+.gal{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px}
+.gal__main{aspect-ratio:10/7;border-radius:8px;overflow:hidden;background:#e9ecf1;position:relative}
+.gal__main img{width:100%;height:100%;object-fit:cover}
+.gal__th{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:8px}
+.gal__th button{padding:0;border:2px solid transparent;border-radius:6px;overflow:hidden;cursor:pointer;aspect-ratio:10/7;background:#e9ecf1}
+.gal__th button.cur{border-color:var(--red)}
+.gal__th img{width:100%;height:100%;object-fit:cover}
+.specs{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:18px;margin-top:14px}
+.specs table{width:100%;border-collapse:collapse;font-size:14px}
+.specs td{padding:8px 0;border-bottom:1px solid var(--line)}
+.specs td:last-child{text-align:right;font-weight:600}
+.buy{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:20px;position:sticky;top:80px}
+.buy h1{font-size:22px}
+.buy__price{margin:12px 0 4px;font-size:30px;font-weight:800;color:var(--red)}
+.calc{margin:14px 0;border-top:1px solid var(--line)}
+.calc div{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px dashed var(--line);font-size:13.5px}
+.calc div span{color:var(--soft)}
+.calc div b{white-space:nowrap}
+.calc .tot{font-size:15px;border-bottom:0}
+.calc .tot b{color:var(--red)}
+.buy .btn{width:100%;margin-top:8px}
+.note{font-size:12px;color:var(--mute);margin-top:10px}
+.soldbox{background:#FFF7E6;border:1px solid #F5D9A6;border-radius:10px;padding:12px 14px;margin:10px 0;font-size:14px}
+
+/* формы и попап */
+.formcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:22px;display:grid;gap:12px;max-width:560px}
+.formcard label{display:grid;gap:5px;font-size:13.5px;font-weight:600;color:var(--soft)}
+.formcard input,.formcard textarea{border:1px solid var(--line);border-radius:8px;padding:11px 12px;color:var(--ink)}
+.formcard input:focus,.quick input:focus,select:focus{outline:none;border-color:var(--red)}
+.formcard .err,.quick .err{border-color:var(--red);background:#FFF6F5}
+.radios{display:flex;gap:8px;flex-wrap:wrap}
+.radios label{display:flex;align-items:center;gap:6px;border:1px solid var(--line);border-radius:8px;padding:9px 12px;cursor:pointer;font-weight:600;color:var(--ink)}
+.radios input{accent-color:var(--red)}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.ok{background:#E8F7EF;border:1px solid #B9E4CB;border-radius:10px;padding:14px;font-weight:600;color:#14643A}
+.modal{position:fixed;inset:0;z-index:60;background:rgb(10 16 30 / .6);display:none;align-items:center;justify-content:center;padding:16px}
+.modal.on{display:flex}
+.modal .formcard{width:100%;max-width:460px;position:relative;max-height:92vh;overflow:auto}
+.modal h3{font-size:19px;padding-right:30px}
+.x{position:absolute;right:12px;top:10px;background:none;border:0;font-size:26px;cursor:pointer;color:var(--mute)}
+.vinhero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;align-items:start}
+.vinhero ul{color:var(--soft);padding-left:18px}
+
+/* админка */
+.admin{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:18px;align-items:start}
+.panel{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:18px}
+.panel h3{font-size:16px;margin-bottom:12px}
+.panel label{display:grid;grid-template-columns:1fr 130px;align-items:center;gap:10px;font-size:13.5px;padding:6px 0;border-bottom:1px solid var(--line)}
+.panel label input{border:1px solid var(--line);border-radius:6px;padding:7px 9px;text-align:right}
+.log{width:100%;border-collapse:collapse;font-size:13px}
+.log th{text-align:left;color:var(--mute);font-weight:600;padding:6px;border-bottom:1px solid var(--line)}
+.log td{padding:8px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+.demo-badge{display:inline-block;background:#FFF7E6;color:#9A6200;border:1px dashed #E5B65A;border-radius:6px;padding:3px 8px;font-size:12px;font-weight:700}
+
+/* подвал */
+.foot{margin-top:56px;background:var(--navy);color:#C6CEDD;font-size:14px}
+.foot__g{display:grid;grid-template-columns:1.2fr 1fr 1fr 1.2fr;gap:24px;padding-top:36px;padding-bottom:24px}
+.foot h4{margin:0 0 10px;color:#fff;font-size:14px}
+.foot nav{display:grid;gap:6px}
+.foot a{text-decoration:none}
+.foot a:hover{color:#fff}
+.msg{display:flex;gap:8px;margin-top:10px}
+.msg a{background:rgb(255 255 255 / .1);border-radius:8px;padding:8px 12px;font-weight:600;color:#fff}
+.map{border-radius:10px;overflow:hidden;border:0;width:100%;height:170px;background:#22355A}
+.foot__b{border-top:1px solid rgb(255 255 255 / .12);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px 24px;padding-top:14px;padding-bottom:26px}
+.foot__demo{flex-basis:100%;font-size:12.5px;color:#8E9AB2}
+/* подпись разработчика в подвале: «Создан в «Веб-Ателье»» – одинаковая на всех сайтах, не менять */
+.foot__made{display:inline-block;white-space:nowrap;font-style:italic;font-size:14px;line-height:1.4;color:#C6CEDD;padding:.4em 0}
+.foot__made a{display:inline;margin:0 0 0 .3em;color:inherit;text-decoration:none;font-family:Calibri,"Carlito",sans-serif;font-weight:700;font-style:italic;font-size:1.12em}
+.foot__made a:hover{color:#fff;text-decoration:underline;text-underline-offset:.18em}
+.foot__made img{display:inline-block;width:40px;height:52px;max-width:none;margin-left:.35em;vertical-align:-7px}
+
+@media (max-width:1100px){
+  .nav{display:none}.burger{display:block}
+  .mnav.on{display:flex;flex-direction:column;background:#fff;border-bottom:1px solid var(--line);padding:6px 18px 12px}
+  .mnav a{text-decoration:none;padding:10px 0;border-top:1px solid var(--line);font-weight:600}
+  .grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .steps,.services{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .foot__g{grid-template-columns:1fr 1fr}
+}
+@media (max-width:860px){
+  .hero .wrap,.about,.carpage,.catalog,.vinhero,.admin{grid-template-columns:minmax(0,1fr)}
+  .owner{display:none}
+  .search{grid-template-columns:1fr 1fr}
+  .search .btn{grid-column:span 2}
+  .grid,.catalog .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .posts{grid-template-columns:minmax(0,1fr)}
+  .filters,.buy{position:static}
+}
+@media (max-width:520px){
+  .strip .wrap span:last-child{display:none}
+  .hdr .wrap{gap:10px}
+  .hdr__ph{font-size:13.5px}
+  .logo small{display:none}
+  .grid,.catalog .grid{grid-template-columns:minmax(0,1fr)}
+  .steps,.services,.about__list{grid-template-columns:minmax(0,1fr)}
+  .foot__g{grid-template-columns:minmax(0,1fr)}
+  .panel label{grid-template-columns:1fr 110px}
+  .log{font-size:12px}
+}
 </style>
 </head>
-<body><main>
-<div class="k">Демо-версия по вашему ТЗ</div>
-<h1>Сайт: авто из Китая под заказ</h1>
-<div class="bar" aria-hidden="true"><i></i></div>
-<p>Сайт сейчас собирается по вашему техническому заданию.<br>Будет готов сегодня к <b>14:32</b> – по этой же ссылке.</p>
-<p style="font-size:.85rem">Страница обновится сама.</p>
-</main></body></html>
+<body>
+<div class="strip"><div class="wrap"><span>Авто из Китая под ключ · растаможка в Уссурийске</span><span>Работаем ежедневно 9:00–21:00 (Влд)</span></div></div>
+<header class="hdr">
+  <div class="wrap">
+    <a class="logo" href="#/" aria-label="КитайМост – на главную">
+      <svg viewBox="0 0 38 38"><rect width="38" height="38" rx="9" fill="#E8352B"/><path d="M6 25c5-10 21-10 26 0" stroke="#fff" stroke-width="3.2" fill="none" stroke-linecap="round"/><path d="M11 25v6M27 25v6M19 18v13" stroke="#fff" stroke-width="3.2" stroke-linecap="round"/><path d="M5 31h28" stroke="#FFC9C5" stroke-width="2.4" stroke-linecap="round"/></svg>
+      <span><b>Китай<span>Мост</span></b><small>авто из Китая под ключ</small></span>
+    </a>
+    <nav class="nav" id="nav"><a href="#/catalog">Каталог</a><a href="#/proverka-vin">Проверить авто</a><a href="#/#o-nas">О нас</a><a href="#/#shema">Схема работы</a><a href="#/blog">Статьи</a><a href="#/#kontakty">Контакты</a></nav>
+    <a class="hdr__ph" href="tel:+79000000000">+7 (900) 000-00-00</a>
+    <button class="btn" type="button" data-pop="lead" id="hdrBtn">Оставить заявку</button>
+    <button class="burger" type="button" aria-label="Меню" aria-expanded="false"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+  <nav class="mnav" id="mnav"><a href="#/catalog">Каталог</a><a href="#/proverka-vin">Проверить авто</a><a href="#/#o-nas">О нас</a><a href="#/#shema">Схема работы</a><a href="#/blog">Статьи</a><a href="#/#kontakty">Контакты</a></nav>
+</header>
+
+<main id="view"></main>
+
+<footer class="foot" id="kontakty">
+  <div class="wrap foot__g">
+    <div><a class="logo" href="#/"><svg viewBox="0 0 38 38"><rect width="38" height="38" rx="9" fill="#E8352B"/><path d="M6 25c5-10 21-10 26 0" stroke="#fff" stroke-width="3.2" fill="none" stroke-linecap="round"/><path d="M11 25v6M27 25v6M19 18v13" stroke="#fff" stroke-width="3.2" stroke-linecap="round"/></svg><span><b style="color:#fff">Китай<span>Мост</span></b></span></a>
+      <p style="margin:12px 0 0">Реквизиты ИП заказчика будут здесь: наименование, ИНН, ОГРНИП, адрес.</p>
+      <div class="msg"><a href="https://wa.me/79000000000" target="_blank" rel="noopener">WhatsApp</a><a href="https://t.me/" target="_blank" rel="noopener">Telegram</a></div></div>
+    <div><h4>Разделы</h4><nav><a href="#/catalog">Каталог авто</a><a href="#/proverka-vin">Проверка по VIN</a><a href="#/#shema">Схема работы</a><a href="#/blog">Статьи</a></nav></div>
+    <div><h4>Популярное</h4><nav><a href="#/blog/rastamozhka-2026">Растаможка в 2026 году</a><a href="#/blog/utilsbor">Утильсбор: 3400 или 5200 ₽</a><a href="#/blog/proverka-istorii">Как проверить историю авто</a></nav></div>
+    <div><h4>Офис в Уссурийске</h4><iframe class="map" title="Карта: Уссурийск" loading="lazy" src="https://yandex.ru/map-widget/v1/?ll=131.951%2C43.797&z=12"></iframe></div>
+  </div>
+  <div class="wrap foot__b">
+    <span>© КитайМост · авто из Китая под ключ</span>
+    <span class="foot__made">Создан в <a href="https://web-atelie.ru/" target="_blank" rel="noopener">«Веб-Ателье»</a><img src="assets/web-atelie.png" alt="" width="40" height="52" loading="lazy" decoding="async"></span>
+    <span class="foot__demo">Демо-концепт по ТЗ. Название, контакты, лоты, цены и курсы условные, фото – из стоковой библиотеки. Расчёт стоимости приблизительный и служит для демонстрации логики.</span>
+  </div>
+</footer>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true"><form class="formcard" id="popForm" novalidate></form></div>
+
+<script>
+/* ---------- данные (в рабочей версии – из базы, наполняется импортом) ---------- */
+const P=n=>'assets/c'+n+'.webp';
+const CARS=[
+ {id:1001,brand:'BYD',model:'Qin Plus DM-i',year:2023,cny:79800,eng:'Гибрид',vol:1498,hp:110,km:18000,city:'Шэньчжэнь',ph:[1,2,8],trim:'Flagship',vin:'LGXCE4CB7P0000001'},
+ {id:1002,brand:'Haval',model:'Jolion 1.5T',year:2022,cny:72000,eng:'Бензин',vol:1497,hp:143,km:34000,city:'Баодин',ph:[4,5,8],trim:'Premium'},
+ {id:1003,brand:'Chery',model:'Tiggo 4',year:2023,cny:58500,eng:'Бензин',vol:1498,hp:113,km:21000,city:'Уху',ph:[5,4,8],trim:'Comfort'},
+ {id:1004,brand:'BYD',model:'Seagull',year:2024,cny:62800,eng:'Электро',vol:0,hp:75,km:8000,city:'Сиань',ph:[3,1,8],trim:'Free'},
+ {id:1005,brand:'Geely',model:'Emgrand 1.5',year:2022,cny:51900,eng:'Бензин',vol:1498,hp:114,km:41000,city:'Ханчжоу',ph:[2,1,8],trim:'Elite'},
+ {id:1006,brand:'Changan',model:'CS35 Plus',year:2021,cny:56000,eng:'Бензин',vol:1395,hp:156,km:52000,city:'Чунцин',ph:[4,6,8],trim:'Lux'},
+ {id:1007,brand:'Wuling',model:'Hongguang Mini EV',year:2023,cny:33800,eng:'Электро',vol:0,hp:41,km:6000,city:'Лючжоу',ph:[7,6,8],trim:'Macaron'},
+ {id:1008,brand:'Toyota',model:'Corolla 1.2T (Китай)',year:2021,cny:83500,eng:'Бензин',vol:1197,hp:116,km:47000,city:'Тяньцзинь',ph:[2,5,8],trim:'Pioneer'},
+ {id:1009,brand:'Honda',model:'XR-V 1.5',year:2022,cny:96000,eng:'Бензин',vol:1498,hp:131,km:29000,city:'Гуанчжоу',ph:[5,2,8],trim:'Fashion'},
+ {id:1010,brand:'Nissan',model:'Sylphy 1.6',year:2023,cny:79000,eng:'Бензин',vol:1598,hp:135,km:15000,city:'Ухань',ph:[1,5,8],trim:'XL'},
+ {id:1011,brand:'Volkswagen',model:'Lavida 1.5',year:2022,cny:74000,eng:'Бензин',vol:1498,hp:113,km:36000,city:'Шанхай',ph:[6,2,8],trim:'Comfortline'},
+ {id:1012,brand:'Geely',model:'Panda Mini',year:2024,cny:42000,eng:'Электро',vol:0,hp:41,km:4000,city:'Тайчжоу',ph:[7,3,8],trim:'Pro'},
+ {id:1013,brand:'BYD',model:'Song Plus DM-i',year:2023,cny:118000,eng:'Гибрид',vol:1498,hp:110,km:22000,city:'Шэньчжэнь',ph:[4,1,8],trim:'Champion'},
+ {id:1014,brand:'Chery',model:'Arrizo 5',year:2021,cny:39000,eng:'Бензин',vol:1497,hp:116,km:61000,city:'Уху',ph:[2,6,8],trim:'Plus'},
+ {id:1015,brand:'Haval',model:'H6 1.5T',year:2020,cny:68000,eng:'Бензин',vol:1497,hp:150,km:79000,city:'Баодин',ph:[5,4,8],trim:'Supreme',sold:true},
+ {id:1016,brand:'Changan',model:'Eado 1.4T',year:2022,cny:61000,eng:'Бензин',vol:1395,hp:158,km:33000,city:'Чунцин',ph:[1,6,8],trim:'Sport'},
+ {id:1017,brand:'BYD',model:'Dolphin Mini',year:2024,cny:69800,eng:'Электро',vol:0,hp:75,km:5000,city:'Сиань',ph:[3,7,8],trim:'Lite'},
+ {id:1018,brand:'Toyota',model:'Levin 1.5 (Китай)',year:2023,cny:89000,eng:'Гибрид',vol:1490,hp:98,km:12000,city:'Гуанчжоу',ph:[6,5,8],trim:'Hybrid'},
+ {id:1019,brand:'Geely',model:'Binyue 1.5T',year:2021,cny:63000,eng:'Бензин',vol:1477,hp:150,km:44000,city:'Нинбо',ph:[4,2,8],trim:'Cool'},
+ {id:1020,brand:'Honda',model:'Fit 1.5',year:2022,cny:69000,eng:'Бензин',vol:1498,hp:122,km:27000,city:'Гуанчжоу',ph:[2,1,8],trim:'Cool'}
+];
+const POSTS=[
+ {slug:'rastamozhka-2026',t:'Растаможка авто из Китая в 2026 году: из чего складывается цена',d:'12.09.2026',l:'Разбираем пошлину для физлиц, утильсбор и расходы в Уссурийске на примере трёх машин.'},
+ {slug:'utilsbor',t:'Утильсбор: когда 3400 ₽, а когда 5200 ₽',d:'28.08.2026',l:'Льготный утильсбор для личного пользования: возраст машины и мощность до 160 л.с.'},
+ {slug:'proverka-istorii',t:'Как проверить историю машины из Китая по VIN',d:'15.08.2026',l:'Пробег, ДТП, ремонты по страховой: что показывает отчёт и как его читать.'}
+];
+/* ---------- настройки расчёта (в рабочей версии – из админ-панели) ---------- */
+const DEF={cnyRate:11.20,cnyAdj:2,eurRate:96,china:9000,border:35000,svh:25000,docs:75000,fee:50000,auto:true};
+const store={get(k){try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+let S=Object.assign({},DEF,store.get('km-settings')||{});
+const fmt=n=>Math.round(n).toLocaleString('ru-RU')+' ₽';
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const NOW=2026;
+function duty(c,valueRub){
+  const age=NOW-c.year, eur=S.eurRate, vEur=valueRub/eur;
+  if(c.eng==='Электро'){const d=valueRub*.15;return {d,vat:(valueRub+d)*.2,label:'Пошлина 15% + НДС 20% (электро)'}}
+  if(age<3){const tiers=[[8500,.54,2.5],[16700,.48,3.5],[42300,.48,5.5],[84500,.48,7.5],[169000,.48,15],[1e12,.48,20]];const t=tiers.find(x=>vEur<=x[0]);return {d:Math.max(vEur*t[1],c.vol*t[2])*eur,vat:0,label:'ЕТС физлиц, авто до 3 лет'}}
+  const r35=[[1000,1.5],[1500,1.7],[1800,2.5],[2300,2.7],[3000,3],[1e9,3.6]],r5=[[1000,3],[1500,3.2],[1800,3.5],[2300,4.8],[3000,5],[1e9,5.7]];
+  const t=(age<=5?r35:r5).find(x=>c.vol<=x[0]);return {d:c.vol*t[1]*eur,vat:0,label:age<=5?'ЕТС физлиц, авто 3–5 лет':'ЕТС физлиц, авто 5–7 лет'}
+}
+function calc(c){
+  const rate=S.cnyRate*(1+S.cnyAdj/100), car=c.cny*rate, china=S.china, border=S.border, svh=S.svh;
+  const du=duty(c,car), util=(NOW-c.year)<3?3400:5200;
+  const rows=[['Цена в Китае ('+c.cny.toLocaleString('ru-RU')+' ¥ × '+rate.toFixed(2)+')',car],['Логистика по Китаю',china],['Граница',border],['Доставка до СВХ Уссурийск',svh],[du.label,du.d+du.vat],['Утильсбор (физлицо)',util],['СБКТС, ЭПТС, декларант',S.docs],['Комиссия',S.fee]];
+  return {rows,total:rows.reduce((a,r)=>a+r[1],0)};
+}
+/* ---------- рендер ---------- */
+const view=document.getElementById('view');
+const photo=(c,i=0)=>P(c.ph[i]);
+function card(c){const t=calc(c).total;return `<a class="car" href="#/car/${c.id}"><div class="car__ph"><img src="${photo(c)}" alt="${esc(c.brand+' '+c.model)}" loading="lazy" width="800" height="560">${c.eng!=='Бензин'?`<span class="tag ${c.eng==='Электро'?'tag--ok':''}">${c.eng}</span>`:''}${c.sold?'<span class="sold">ПРОДАНО</span>':''}</div><div class="car__b"><h3>${esc(c.brand)} ${esc(c.model)}</h3><div class="car__meta">${c.year} · ${c.km.toLocaleString('ru-RU')} км · ${c.hp} л.с. · ${esc(c.city)}</div><div class="car__price"><small>под ключ в Уссурийске</small><b>${fmt(t)}</b></div></div></a>`}
+const brands=[...new Set(CARS.map(c=>c.brand))];
+let shown=12;
+function home(){
+  view.innerHTML=`
+  <section class="hero"><div class="hero__bg"></div><div class="wrap">
+    <div>
+      <h1>Выбор за вами,<br><span>всё остальное – за нами</span></h1>
+      <p class="hero__sub">Подберём и привезём автомобиль из Китая под ключ через Уссурийскую таможню. Итоговая цена фиксируется в договоре.</p>
+      <form class="quick" id="quickForm" novalidate>
+        <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <input name="name" placeholder="Ваше имя" autocomplete="name">
+        <input name="phone" type="tel" placeholder="+7 (___) ___-__-__" autocomplete="tel" data-mask>
+        <button class="btn" type="submit">Получить расчёт стоимости авто под ключ</button>
+        <small>Перезвоним за 15 минут. Нажимая кнопку, вы соглашаетесь на обработку персональных данных.</small>
+      </form>
+      <div class="facts"><div><b>320+</b><span>машин привезли</span></div><div><b>18–30 дней</b><span>от Китая до вас</span></div><div><b>0 ₽</b><span>доплат сверх договора</span></div></div>
+    </div>
+    <div class="owner"><div class="owner__ph">фото владельца</div><b>Руководитель КитайМост</b><span>Лично контролирую каждую машину – от осмотра в Китае до выдачи в Уссурийске</span></div>
+  </div></section>
+  <div class="wrap"><form class="search" id="searchForm">
+    <select name="brand" aria-label="Марка"><option value="">Любая марка</option>${brands.map(b=>`<option>${b}</option>`).join('')}</select>
+    <select name="eng" aria-label="Двигатель"><option value="">Любой двигатель</option><option>Бензин</option><option>Гибрид</option><option>Электро</option></select>
+    <select name="year" aria-label="Год от"><option value="">Год от</option>${[2019,2020,2021,2022,2023,2024].map(y=>`<option>${y}</option>`).join('')}</select>
+    <select name="price" aria-label="Цена до"><option value="">Цена до</option>${[1000000,1300000,1600000,2000000,2500000].map(p=>`<option value="${p}">до ${(p/1e6).toLocaleString('ru-RU')} млн ₽</option>`).join('')}</select>
+    <button class="btn" type="submit">Найти авто</button>
+  </form></div>
+  <section class="sec wrap" id="o-nas"><div class="about">
+    <div class="about__txt"><h2>О нас</h2><p>Работаем как ИП напрямую: без посредников и «серых» схем. Цена под ключ записывается в договоре и не меняется. Вы видите прозрачный инвойс из Китая, а каждый этап – осмотр, выкуп, погрузку, границу и растаможку – мы контролируем лично и присылаем фото и видео.</p><p>Привозим машины до 7 лет с мощностью до 160 л.с. – на них действует льготный утильсбор для физлиц.</p></div>
+    <div class="about__list"><div><b>Фикс</b><span>цена под ключ в договоре</span></div><div><b>Инвойс</b><span>прозрачная цена из Китая</span></div><div><b>Фото/видео</b><span>на каждом этапе пути</span></div><div><b>VIN</b><span>проверка истории до покупки</span></div></div>
+  </div></section>
+  <section class="sec wrap"><div class="sec__head"><div><h2>Горячие предложения</h2><p>Цены уже в рублях, под ключ в Уссурийске. Обновляются автоматически.</p></div><a class="btn btn--line" href="#/catalog">Весь каталог →</a></div>
+    <div class="brands">${brands.map(b=>`<button type="button" data-brand="${b}">${b}</button>`).join('')}</div>
+    <div class="grid" id="hot"></div><div class="more"><button class="btn btn--dark" type="button" id="moreBtn">Показать ещё</button></div></section>
+  <section class="sec wrap" id="shema"><div class="sec__head"><div><h2>Схема работы</h2><p>От договора до ключей – 18–30 дней</p></div></div>
+    <ol class="steps"><li><b>Договор</b><span>Фиксируем бюджет, модель и итоговую цену под ключ</span></li><li><b>Подбор в Китае</b><span>Ищем на площадках Китая, проверяем историю по VIN</span></li><li><b>Осмотр и выкуп</b><span>Осматриваем машину вживую, присылаем фото и видео</span></li><li><b>Доставка до границы</b><span>Логистика по Китаю и экспортное оформление</span></li><li><b>Граница и СВХ</b><span>Пересекаем границу, машина на складе в Уссурийске</span></li><li><b>Растаможка</b><span>Пошлина, утильсбор, СБКТС и ЭПТС</span></li><li><b>Выдача</b><span>Передаём машину в Уссурийске или отправляем автовозом</span></li><li><b>Поддержка</b><span>Помогаем с постановкой на учёт</span></li></ol></section>
+  <section class="sec wrap"><div class="sec__head"><div><h2>Наши услуги</h2><p>Тексты и иконки этого блока заказчик пришлёт позже – ниже пример</p></div></div>
+    <div class="services"><div><i>🚗</i><b>Авто под заказ</b><span>Подбор под ваш бюджет и пожелания</span></div><div><i>🔎</i><b>Проверка по VIN</b><span>Отчёт об истории на русском языке</span></div><div><i>📄</i><b>Растаможка</b><span>Оформление в Уссурийске под ключ</span></div><div><i>🚚</i><b>Доставка по России</b><span>Автовозом до вашего города</span></div></div></section>
+  <section class="sec wrap"><div class="sec__head"><div><h2>Статьи</h2></div><a class="btn btn--line" href="#/blog">Все статьи →</a></div><div class="posts">${POSTS.map(postCard).join('')}</div></section>`;
+  renderHot();
+  document.getElementById('moreBtn').onclick=()=>{shown+=4;renderHot()};
+  view.querySelectorAll('[data-brand]').forEach(b=>b.onclick=()=>{location.hash='#/catalog?brand='+encodeURIComponent(b.dataset.brand)});
+  document.getElementById('searchForm').onsubmit=e=>{e.preventDefault();const p=new URLSearchParams([...new FormData(e.target)].filter(x=>x[1]));location.hash='#/catalog?'+p};
+  bindForm(document.getElementById('quickForm'),'Быстрая заявка (главная)');
+}
+function renderHot(){const list=CARS.filter(c=>!c.sold);document.getElementById('hot').innerHTML=list.slice(0,shown).map(card).join('');const b=document.getElementById('moreBtn');if(shown>=list.length)b.style.display='none'}
+const postCard=p=>`<a class="post" href="#/blog/${p.slug}"><small>${p.d}</small><b>${esc(p.t)}</b><p>${esc(p.l)}</p></a>`;
+function catalog(q){
+  const f=Object.fromEntries(new URLSearchParams(q||''));let page=1;
+  view.innerHTML=`<div class="page wrap"><div class="crumbs"><a href="#/">Главная</a> › Каталог</div><h2 style="margin-bottom:16px">Каталог авто из Китая</h2>
+  <div class="catalog"><form class="filters" id="flt">
+    <label>Марка<select name="brand"><option value="">Любая</option>${brands.map(b=>`<option ${f.brand===b?'selected':''}>${b}</option>`).join('')}</select></label>
+    <label>Модель<input class="field" name="model" placeholder="Например, Qin" value="${esc(f.model||'')}"></label>
+    <label>Двигатель<select name="eng"><option value="">Любой</option>${['Бензин','Гибрид','Электро'].map(x=>`<option ${f.eng===x?'selected':''}>${x}</option>`).join('')}</select></label>
+    <div class="row2"><label>Год от<input type="number" name="year" min="2019" max="2026" value="${esc(f.year||'')}" placeholder="2019"></label><label>Пробег до<input type="number" name="km" step="5000" value="${esc(f.km||'')}" placeholder="км"></label></div>
+    <label>Цена до, ₽<input type="number" name="price" step="50000" value="${esc(f.price||'')}" placeholder="2 000 000"></label>
+    <button class="btn" type="submit">Показать</button><button class="btn btn--line" type="button" id="reset">Сбросить</button>
+  </form><div><div class="cat__top"><b id="cnt"></b><select id="sort" aria-label="Сортировка" style="width:auto"><option value="new">Сначала новые</option><option value="cheap">Сначала дешевле</option><option value="km">Меньше пробег</option></select></div><div class="grid" id="list"></div><div class="pager" id="pager"></div></div></div></div>`;
+  const form=document.getElementById('flt');
+  function run(){
+    const v=Object.fromEntries(new FormData(form));const srt=document.getElementById('sort').value;
+    let r=CARS.filter(c=>(!v.brand||c.brand===v.brand)&&(!v.model||(c.model).toLowerCase().includes(v.model.toLowerCase()))&&(!v.eng||c.eng===v.eng)&&(!v.year||c.year>=+v.year)&&(!v.km||c.km<=+v.km)&&(!v.price||calc(c).total<=+v.price));
+    r.sort((a,b)=>srt==='cheap'?calc(a).total-calc(b).total:srt==='km'?a.km-b.km:b.year-a.year||a.km-b.km);
+    const per=6,pages=Math.max(1,Math.ceil(r.length/per));page=Math.min(page,pages);
+    document.getElementById('cnt').textContent='Найдено: '+r.length;
+    document.getElementById('list').innerHTML=r.length?r.slice((page-1)*per,page*per).map(card).join(''):'<div class="empty" style="grid-column:1/-1">Под такие условия машин нет. Оставьте заявку – подберём под заказ.</div>';
+    document.getElementById('pager').innerHTML=pages>1?Array.from({length:pages},(_,i)=>`<button type="button" class="${i+1===page?'cur':''}" data-p="${i+1}">${i+1}</button>`).join(''):'';
+    document.querySelectorAll('[data-p]').forEach(b=>b.onclick=()=>{page=+b.dataset.p;run();scrollTo({top:0})});
+  }
+  form.onsubmit=e=>{e.preventDefault();page=1;run()};document.getElementById('sort').onchange=()=>{page=1;run()};
+  document.getElementById('reset').onclick=()=>{form.reset();form.querySelectorAll('input').forEach(i=>i.value='');page=1;run()};
+  run();
+}
+function carPage(id){
+  const c=CARS.find(x=>x.id==id);if(!c)return catalog();
+  const k=calc(c);const similar=CARS.filter(x=>x.id!==c.id&&!x.sold&&(x.brand===c.brand||Math.abs(calc(x).total-k.total)<300000)).slice(0,4);
+  view.innerHTML=`<div class="page wrap"><div class="crumbs"><a href="#/">Главная</a> › <a href="#/catalog">Каталог</a> › ${esc(c.brand)} ${esc(c.model)}</div>
+  <div class="carpage"><div>
+    <div class="gal"><div class="gal__main"><img id="big" src="${photo(c)}" alt="${esc(c.brand+' '+c.model)}" width="800" height="560"></div><div class="gal__th">${c.ph.map((p,i)=>`<button type="button" class="${i?'':'cur'}" data-i="${i}"><img src="${P(p)}" alt="" loading="lazy"></button>`).join('')}</div></div>
+    <div class="specs"><h3 style="margin-bottom:8px">Характеристики</h3><table>
+      <tr><td>Год</td><td>${c.year}</td></tr><tr><td>Пробег</td><td>${c.km.toLocaleString('ru-RU')} км</td></tr><tr><td>Двигатель</td><td>${c.eng}${c.vol?', '+(c.vol/1000).toFixed(1)+' л':''}, ${c.hp} л.с.</td></tr>
+      <tr><td>Комплектация</td><td>${esc(c.trim)}</td></tr><tr><td>Город в Китае</td><td>${esc(c.city)}</td></tr><tr><td>Номер лота</td><td>#${c.id}</td></tr></table></div>
+  </div><aside class="buy">
+    <span class="tag tag--gray">Лот #${c.id}</span>
+    <h1 style="margin-top:8px">${esc(c.brand)} ${esc(c.model)}, ${c.year}</h1>
+    ${c.sold?'<div class="soldbox"><b>Архив · Продано.</b> Этот автомобиль уже продан. Посмотрите похожие предложения ниже или оставьте заявку – найдём такой же.</div>':''}
+    <div class="buy__price">${fmt(k.total)}</div><div class="note" style="margin:0">под ключ в Уссурийске, для физлица</div>
+    <div class="calc">${k.rows.map(r=>`<div><span>${esc(r[0])}</span><b>${fmt(r[1])}</b></div>`).join('')}<div class="tot"><span><b style="color:var(--ink)">Итого под ключ</b></span><b>${fmt(k.total)}</b></div></div>
+    <button class="btn" type="button" data-pop="lead" data-lot="${c.id}">Оставить заявку на этот автомобиль</button>
+    <button class="btn btn--line" type="button" data-pop="vin" data-lot="${c.id}">Заказать проверку по VIN</button>
+    <p class="note">Курс юаня – безналичный курс продажи ВТБ с корректировкой ${S.cnyAdj}%. На рабочем сайте расчёт выполняется на сервере, формулы меняются в админ-панели.</p>
+  </aside></div>
+  ${similar.length?`<section class="sec"><h2 style="margin-bottom:14px">Похожие предложения</h2><div class="grid">${similar.map(card).join('')}</div></section>`:''}</div>`;
+  view.querySelectorAll('.gal__th button').forEach(b=>b.onclick=()=>{document.getElementById('big').src=P(c.ph[+b.dataset.i]);view.querySelectorAll('.gal__th button').forEach(x=>x.classList.toggle('cur',x===b))});
+}
+function vinFields(){return `
+  <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+  <label>Ваше имя<input name="name" autocomplete="name"></label>
+  <label>Ваш телефон *<input name="phone" type="tel" placeholder="+7 (___) ___-__-__" data-mask autocomplete="tel"></label>
+  <div><div style="font-size:13.5px;font-weight:600;color:var(--soft);margin-bottom:6px">Куда прислать отчёт</div><div class="radios">
+    <label><input type="radio" name="ch" value="email" checked> Email</label><label><input type="radio" name="ch" value="tg"> Telegram</label><label><input type="radio" name="ch" value="max"> MAX</label></div></div>
+  <label data-ch="email">Укажите вашу электронную почту<input name="email" type="email" placeholder="name@mail.ru"></label>
+  <label data-ch="tg" hidden>Укажите ваш Telegram-ID или юзернейм (@username)<input name="tg" placeholder="@username"></label>
+  <label data-ch="max" hidden>Укажите ваш MAX ID<input name="max" placeholder="ID в MAX"></label>`}
+function vinPage(){
+  view.innerHTML=`<div class="page wrap"><div class="crumbs"><a href="#/">Главная</a> › Проверить авто</div>
+  <div class="vinhero"><div><h2>Проверка истории авто из Китая</h2><p style="color:var(--soft)">Вставьте VIN, ссылку на объявление с любого автосайта или ссылку на карточку нашего каталога. Подготовим отчёт на русском языке и пришлём удобным способом.</p>
+  <ul><li>Реальный пробег и ТО у дилера</li><li>ДТП и выплаты по страховке</li><li>Залоги и ограничения</li><li>Экспертное заключение: брать или нет</li></ul></div>
+  <form class="formcard" id="vinForm" novalidate><h3>Заявка на проверку</h3>
+    <label>VIN или ссылка на автомобиль *<input name="vin" placeholder="LGXCE4CB7P0000001 или https://…"></label>${vinFields()}
+    <button class="btn" type="submit">Отправить заявку</button><span class="note">Оплата отчёта и детали – после связи с вами.</span></form></div></div>`;
+  bindForm(document.getElementById('vinForm'),'Проверка VIN (страница)');
+}
+function blog(slug){
+  if(slug){const p=POSTS.find(x=>x.slug===slug)||POSTS[0];
+    view.innerHTML=`<div class="page wrap" style="max-width:820px"><div class="crumbs"><a href="#/">Главная</a> › <a href="#/blog">Статьи</a> › ${esc(p.t)}</div><article class="formcard" style="max-width:none"><small style="color:var(--mute)">${p.d}</small><h2>${esc(p.t)}</h2><p style="color:var(--soft);font-size:16px">${esc(p.l)}</p><p>Здесь будет полный текст статьи. Раздел технически готов к продвижению: у каждой статьи свой адрес, заголовок и описание для поисковиков, статьи попадают в карту сайта, внизу – ссылки на подходящие машины из каталога.</p><a class="btn" href="#/catalog" style="justify-self:start">Смотреть каталог</a></article></div>`;return}
+  view.innerHTML=`<div class="page wrap"><div class="crumbs"><a href="#/">Главная</a> › Статьи</div><h2 style="margin-bottom:16px">Статьи</h2><div class="posts">${POSTS.map(postCard).join('')}</div></div>`;
+}
+function admin(){
+  const L=store.get('km-leads')||[];const F=[['cnyRate','Курс юаня ВТБ (вручную), ₽'],['cnyAdj','Корректировка курса, %'],['eurRate','Курс евро для пошлины, ₽'],['china','Логистика по Китаю, ₽'],['border','Граница, ₽'],['svh','Доставка до СВХ, ₽'],['docs','СБКТС, ЭПТС, декларант, ₽'],['fee','Комиссия ИП, ₽']];
+  view.innerHTML=`<div class="page wrap"><div class="crumbs"><a href="#/">Главная</a> › Админ-панель</div><h2>Админ-панель <span class="demo-badge">демо</span></h2><p style="color:var(--soft)">Так будет выглядеть управление расчётом и заявками. Поменяйте курс или расходы – цены в каталоге пересчитаются сразу.</p>
+  <div class="admin"><div class="panel"><h3>Формула «под ключ»</h3>${F.map(([k,l])=>`<label>${l}<input type="number" step="any" data-k="${k}" value="${S[k]}"></label>`).join('')}
+    <label style="border:0">Курс ВТБ автоматически<input type="checkbox" data-k="auto" ${S.auto?'checked':''} style="justify-self:end;width:18px;height:18px;accent-color:var(--red)"></label>
+    <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap"><button class="btn" type="button" id="saveS">Сохранить</button><button class="btn btn--line" type="button" id="defS">Вернуть по умолчанию</button></div>
+    <p class="note">Пример: BYD Qin Plus DM-i 2023 сейчас стоит под ключ <b id="ex">${fmt(calc(CARS[0]).total)}</b></p></div>
+  <div class="panel"><h3>Журнал заявок (${L.length})</h3>${L.length?`<div style="overflow-x:auto"><table class="log"><tr><th>Дата</th><th>Форма</th><th>Клиент</th><th>Связь</th><th>Лот / VIN</th></tr>${L.slice().reverse().map(x=>`<tr><td>${x.date}</td><td>${esc(x.form)}</td><td>${esc(x.name||'—')}<br>${esc(x.phone)}</td><td>${esc(x.contact||'телефон')}</td><td>${esc(x.lot||'—')}</td></tr>`).join('')}</table></div>`:'<p class="note">Пока пусто. Отправьте любую форму на сайте – заявка появится здесь (и на рабочем сайте – сразу в Telegram).</p>'}</div></div></div>`;
+  const read=()=>{view.querySelectorAll('[data-k]').forEach(i=>S[i.dataset.k]=i.type==='checkbox'?i.checked:+i.value);document.getElementById('ex').textContent=fmt(calc(CARS[0]).total)};
+  view.querySelectorAll('[data-k]').forEach(i=>i.oninput=read);
+  document.getElementById('saveS').onclick=()=>{read();store.set('km-settings',S);toast('Сохранено. Цены в каталоге пересчитаны')};
+  document.getElementById('defS').onclick=()=>{S=Object.assign({},DEF);store.set('km-settings',S);admin()};
+}
+/* ---------- формы: маска, валидация, антиспам ---------- */
+function mask(i){i.addEventListener('input',()=>{let d=i.value.replace(/\D/g,'');if(d.startsWith('8'))d='7'+d.slice(1);if(!d.startsWith('7'))d='7'+d;d=d.slice(0,11);const p=d.slice(1);let s='+7';if(p.length)s+=' ('+p.slice(0,3);if(p.length>=3)s+=') '+p.slice(3,6);if(p.length>=6)s+='-'+p.slice(6,8);if(p.length>=8)s+='-'+p.slice(8,10);i.value=s});i.addEventListener('focus',()=>{if(!i.value)i.value='+7 ('})}
+function bindForm(f,formName,lot){
+  f.dataset.t=Date.now();f.querySelectorAll('[data-mask]').forEach(mask);
+  const sync=()=>{const ch=(f.querySelector('input[name=ch]:checked')||{}).value;f.querySelectorAll('[data-ch]').forEach(l=>l.hidden=l.dataset.ch!==ch)};
+  f.querySelectorAll('input[name=ch]').forEach(r=>r.onchange=sync);
+  f.addEventListener('submit',e=>{
+    e.preventDefault();let bad=[];const g=n=>f.elements[n];
+    const ph=g('phone');if(ph.value.replace(/\D/g,'').length!==11)bad.push(ph);
+    if(g('vin')&&!g('vin').value.trim())bad.push(g('vin'));
+    const ch=(f.querySelector('input[name=ch]:checked')||{}).value;
+    if(ch==='email'&&!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(g('email').value.trim()))bad.push(g('email'));
+    if(ch==='tg'&&!g('tg').value.trim())bad.push(g('tg'));if(ch==='max'&&!g('max').value.trim())bad.push(g('max'));
+    f.querySelectorAll('.err').forEach(x=>x.classList.remove('err'));bad.forEach(x=>x.classList.add('err'));
+    if(bad.length){bad[0].focus();return}
+    // невидимая защита от ботов: скрытое поле и слишком быстрая отправка
+    if(g('website').value||Date.now()-f.dataset.t<1500){f.innerHTML='<div class="ok">Спасибо! Заявка принята.</div>';return}
+    const L=store.get('km-leads')||[];const contact=ch?({email:'Email: '+g('email').value,tg:'Telegram: '+g('tg').value,max:'MAX: '+g('max').value})[ch]:'';
+    L.push({date:new Date().toLocaleString('ru-RU',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'}),form:formName,name:g('name')?.value,phone:ph.value,contact,lot:(lot?'Лот #'+lot+(CARS.find(c=>c.id==lot)?.vin?' · VIN '+CARS.find(c=>c.id==lot).vin:''):'')+(g('vin')?g('vin').value:'')});store.set('km-leads',L.slice(-30));
+    f.innerHTML='<div class="ok">Спасибо! Заявка принята – менеджер свяжется с вами в течение 15 минут. В демо заявка сохраняется в журнал админ-панели (кнопка «Админ-панель» внизу страницы).</div>';
+  });
+}
+/* ---------- попапы ---------- */
+const modal=document.getElementById('modal'),pop=document.getElementById('popForm');
+function openPop(kind,lot){
+  const c=lot&&CARS.find(x=>x.id==lot);
+  pop.innerHTML=`<button class="x" type="button" aria-label="Закрыть">×</button><h3>${kind==='vin'?'Заказать проверку по VIN':(c?'Заявка на '+esc(c.brand+' '+c.model):'Оставить заявку')}</h3>${c?`<span class="note" style="margin:0">Лот #${c.id} прикрепится к заявке автоматически</span>`:''}
+  ${kind==='vin'?vinFields():`<input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true"><label>Ваше имя<input name="name" autocomplete="name"></label><label>Ваш телефон *<input name="phone" type="tel" placeholder="+7 (___) ___-__-__" data-mask autocomplete="tel"></label><label>Комментарий<textarea name="comment" rows="3" placeholder="Бюджет, марка, пожелания"></textarea></label>`}
+  <button class="btn" type="submit">Отправить заявку</button><span class="note">Нажимая кнопку, вы соглашаетесь на обработку персональных данных.</span>`;
+  bindForm(pop,kind==='vin'?'Проверка VIN (карточка)':(c?'Заявка на авто':'Заявка (шапка)'),lot);
+  modal.classList.add('on');setTimeout(()=>pop.querySelector('input[name=name],input[name=phone]')?.focus(),50);
+}
+modal.addEventListener('click',e=>{if(e.target===modal||e.target.classList.contains('x'))modal.classList.remove('on')});
+addEventListener('keydown',e=>{if(e.key==='Escape')modal.classList.remove('on')});
+document.addEventListener('click',e=>{const b=e.target.closest('[data-pop]');if(b){e.preventDefault();openPop(b.dataset.pop,b.dataset.lot)}});
+function toast(t){let el=document.getElementById('toast');if(!el){el=document.createElement('div');el.id='toast';el.style.cssText='position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:#13233F;color:#fff;padding:12px 18px;border-radius:10px;z-index:70;font-weight:600';document.body.append(el)}el.textContent=t;el.style.display='block';clearTimeout(el._t);el._t=setTimeout(()=>el.style.display='none',2200)}
+/* ---------- маршруты ---------- */
+const burger=document.querySelector('.burger'),mnav=document.getElementById('mnav');
+burger.onclick=()=>{const on=mnav.classList.toggle('on');burger.setAttribute('aria-expanded',on)};
+function route(){
+  mnav.classList.remove('on');modal.classList.remove('on');
+  const h=location.hash.replace(/^#\/?/,'');const [path,q]=h.split('?');const parts=path.split('/');
+  if(parts[0]==='catalog')catalog(q);else if(parts[0]==='car')carPage(parts[1]);else if(parts[0]==='proverka-vin')vinPage();else if(parts[0]==='blog')blog(parts[1]);else if(parts[0]==='admin')admin();else{home();const a=path.match(/#(.+)$/);if(a){setTimeout(()=>document.getElementById(a[1])?.scrollIntoView({behavior:'smooth'}),30);return}}
+  scrollTo({top:0});
+  document.querySelectorAll('.nav a').forEach(a=>a.classList.toggle('cur',a.getAttribute('href')==='#/'+parts[0]));
+}
+addEventListener('hashchange',route);route();
+// ссылка на демо-админку в подвале
+document.querySelector('.foot__b span').insertAdjacentHTML('beforeend',' · <a href="#/admin" style="text-decoration:underline">Админ-панель (демо)</a>');
+</script>
+</body>
+</html>
