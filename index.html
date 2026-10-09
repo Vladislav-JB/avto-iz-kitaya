@@ -227,6 +227,8 @@ select,input[type=number],.field{border:1px solid var(--line);border-radius:8px;
   .posts{grid-template-columns:minmax(0,1fr)}
   .filters,.buy{position:static}
 }
+@media (max-width:640px){#hdrBtn{display:none}.logo b{font-size:18px}.logo svg{width:32px;height:32px}}
+@media (max-width:360px){.hdr__ph{font-size:12.5px}.logo b{font-size:16px}.logo svg{width:28px;height:28px}.hdr .wrap{gap:8px}}
 @media (max-width:520px){
   .strip .wrap span:last-child{display:none}
   .hdr .wrap{gap:10px}
@@ -253,7 +255,7 @@ select,input[type=number],.field{border:1px solid var(--line);border-radius:8px;
     <button class="btn" type="button" data-pop="lead" id="hdrBtn">Оставить заявку</button>
     <button class="burger" type="button" aria-label="Меню" aria-expanded="false"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
   </div>
-  <nav class="mnav" id="mnav"><a href="#/catalog">Каталог</a><a href="#/proverka-vin">Проверить авто</a><a href="#/#o-nas">О нас</a><a href="#/#shema">Схема работы</a><a href="#/blog">Статьи</a><a href="#/#kontakty">Контакты</a></nav>
+  <nav class="mnav" id="mnav"><a href="#/catalog">Каталог</a><a href="#/proverka-vin">Проверить авто</a><a href="#/#o-nas">О нас</a><a href="#/#shema">Схема работы</a><a href="#/blog">Статьи</a><a href="#/#kontakty">Контакты</a><a href="#" data-pop="lead" style="color:var(--red)">Оставить заявку</a></nav>
 </header>
 
 <main id="view"></main>
